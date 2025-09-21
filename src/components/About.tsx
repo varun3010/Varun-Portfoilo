@@ -1,8 +1,12 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Briefcase, Calendar, MapPin, Award, Users, Lightbulb } from "lucide-react";
+import { useScrollAnimation, useStaggeredAnimation } from "@/hooks/useScrollAnimation";
 
 const About = () => {
+  const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation();
+  const { ref: highlightsRef, visibleItems: visibleHighlights } = useStaggeredAnimation(Array(4), 150);
+  
   const highlights = [
     {
       icon: Briefcase,
@@ -35,9 +39,9 @@ const About = () => {
   ];
 
   return (
-    <section className="py-20 relative">
+    <section ref={sectionRef} className="py-20 relative">
       <div className="container mx-auto px-6">
-        <div className="text-center space-y-4 mb-16">
+        <div className={`text-center space-y-4 mb-16 transition-all duration-800 ${sectionVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'}`}>
           <h2 className="text-4xl lg:text-5xl font-bold">
             About <span className="gradient-text">Me</span>
           </h2>
@@ -48,7 +52,7 @@ const About = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left column - Main content */}
-          <div className="space-y-8">
+          <div className={`space-y-8 transition-all duration-800 delay-200 ${sectionVisible ? 'animate-slide-left' : 'opacity-0 translate-x-8'}`}>
             {/* Career Objective */}
             <Card className="p-8 bg-card-gradient shadow-card border-border/50">
               <div className="flex items-center gap-3 mb-6">
@@ -103,11 +107,17 @@ const About = () => {
           </div>
 
           {/* Right column - Highlights and personal info */}
-          <div className="space-y-8">
+          <div className={`space-y-8 transition-all duration-800 delay-400 ${sectionVisible ? 'animate-slide-right' : 'opacity-0 translate-x-8'}`}>
             {/* Key Highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div ref={highlightsRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {highlights.map((highlight, index) => (
-                <Card key={index} className="p-6 bg-card-gradient shadow-card border-border/50 hover:shadow-primary transition-all duration-300 group">
+                <Card 
+                  key={index} 
+                  className={`p-6 bg-card-gradient shadow-card border-border/50 hover:shadow-primary transition-all duration-500 group ${
+                    visibleHighlights.has(index) ? 'animate-scale-in' : 'opacity-0 scale-95'
+                  }`}
+                  style={{ animationDelay: `${index * 0.15}s` }}
+                >
                   <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                     <highlight.icon className="w-6 h-6 text-primary" />
                   </div>
