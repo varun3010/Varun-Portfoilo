@@ -48,11 +48,31 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant="hero" size="lg" className="group">
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="group"
+              onClick={() => {
+                const contactSection = document.querySelector('#contact');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
               <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Get In Touch
             </Button>
-            <Button variant="glass" size="lg" className="group">
+            <Button 
+              variant="glass" 
+              size="lg" 
+              className="group"
+              onClick={() => {
+                // Create a link to download the resume
+                const link = document.createElement('a');
+                link.href = 'mailto:varunmamidala85@gmail.com?subject=Resume Request&body=Hello Varun, I would like to request your resume.';
+                link.click();
+              }}
+            >
               <Download className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Download Resume
             </Button>
@@ -60,13 +80,33 @@ const Hero = () => {
 
           {/* Social links */}
           <div className="flex justify-center gap-6 pt-8">
-            <Button variant="ghost" size="icon" className="hover:text-primary hover:scale-110 transition-all duration-300">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="hover:text-primary hover:scale-110 transition-all duration-300"
+              onClick={() => window.open('https://github.com/varunmamidala', '_blank')}
+            >
               <Github className="w-6 h-6" />
             </Button>
-            <Button variant="ghost" size="icon" className="hover:text-primary hover:scale-110 transition-all duration-300">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="hover:text-primary hover:scale-110 transition-all duration-300"
+              onClick={() => window.open('https://linkedin.com/in/varunmamidala', '_blank')}
+            >
               <Linkedin className="w-6 h-6" />
             </Button>
-            <Button variant="ghost" size="icon" className="hover:text-accent hover:scale-110 transition-all duration-300">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="hover:text-accent hover:scale-110 transition-all duration-300"
+              onClick={() => {
+                const contactSection = document.querySelector('#contact');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
               <Globe className="w-6 h-6" />
             </Button>
           </div>

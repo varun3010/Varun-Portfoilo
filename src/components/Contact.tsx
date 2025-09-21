@@ -31,19 +31,19 @@ const Contact = () => {
     {
       icon: Github,
       label: "GitHub",
-      href: "#",
+      href: "https://github.com/varunmamidala",
       color: "hover:text-primary"
     },
     {
       icon: Linkedin,
-      label: "LinkedIn",
-      href: "#",
+      label: "LinkedIn", 
+      href: "https://linkedin.com/in/varunmamidala",
       color: "hover:text-primary"
     },
     {
       icon: Globe,
       label: "Portfolio",
-      href: "#",
+      href: "#home",
       color: "hover:text-accent"
     }
   ];
@@ -99,11 +99,18 @@ const Contact = () => {
                       variant="ghost"
                       size="icon"
                       className={`${social.color} hover:scale-110 transition-all duration-300`}
-                      asChild
+                      onClick={() => {
+                        if (social.href.startsWith('#')) {
+                          const element = document.querySelector(social.href);
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth' });
+                          }
+                        } else {
+                          window.open(social.href, '_blank');
+                        }
+                      }}
                     >
-                      <a href={social.href} aria-label={social.label}>
-                        <social.icon className="w-5 h-5" />
-                      </a>
+                      <social.icon className="w-5 h-5" />
                     </Button>
                   ))}
                 </div>
@@ -114,11 +121,24 @@ const Contact = () => {
             <Card className="p-8 bg-card-gradient shadow-card border-border/50">
               <h3 className="text-2xl font-semibold mb-6">Quick Actions</h3>
               <div className="space-y-4">
-                <Button className="w-full" variant="hero" size="lg">
+                <Button 
+                  className="w-full" 
+                  variant="hero" 
+                  size="lg"
+                  onClick={() => window.open('mailto:varunmamidala85@gmail.com?subject=Let\'s Connect&body=Hello Varun, I\'d like to discuss a potential opportunity.', '_blank')}
+                >
                   <Send className="w-5 h-5" />
                   Send a Message
                 </Button>
-                <Button className="w-full" variant="glass" size="lg">
+                <Button 
+                  className="w-full" 
+                  variant="glass" 
+                  size="lg"
+                  onClick={() => {
+                    // Request resume via email
+                    window.open('mailto:varunmamidala85@gmail.com?subject=Resume Request&body=Hello Varun, I would like to request your resume.', '_blank');
+                  }}
+                >
                   <Download className="w-5 h-5" />
                   Download Resume
                 </Button>
@@ -204,11 +224,21 @@ const Contact = () => {
               Let's discuss how my expertise in modern web technologies can help achieve your goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="lg" className="group">
+              <Button 
+                variant="hero" 
+                size="lg" 
+                className="group"
+                onClick={() => window.open('mailto:varunmamidala85@gmail.com?subject=Project Discussion&body=Hello Varun, I\'d like to discuss a potential project collaboration.', '_blank')}
+              >
                 <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 Start a Conversation
               </Button>
-              <Button variant="glass" size="lg" className="group">
+              <Button 
+                variant="glass" 
+                size="lg" 
+                className="group"
+                onClick={() => window.open('tel:+919951412566', '_blank')}
+              >
                 <Phone className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 Schedule a Call
               </Button>

@@ -57,7 +57,11 @@ const Navigation = () => {
                 {item.name}
               </button>
             ))}
-            <Button variant="hero" size="sm">
+            <Button 
+              variant="hero" 
+              size="sm"
+              onClick={() => window.open('mailto:varunmamidala85@gmail.com?subject=Hire Me&body=Hello Varun, I\'d like to discuss a job opportunity.', '_blank')}
+            >
               <Mail className="w-4 h-4" />
               Hire Me
             </Button>
@@ -91,7 +95,12 @@ const Navigation = () => {
                 </button>
               ))}
               <div className="pt-3">
-                <Button variant="hero" size="sm" className="w-full">
+                <Button 
+                  variant="hero" 
+                  size="sm" 
+                  className="w-full"
+                  onClick={() => window.open('mailto:varunmamidala85@gmail.com?subject=Hire Me&body=Hello Varun, I\'d like to discuss a job opportunity.', '_blank')}
+                >
                   <Mail className="w-4 h-4" />
                   Hire Me
                 </Button>
