@@ -84,6 +84,21 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "float": "float 3s ease-in-out infinite",
+        "glow": "glow 2s ease-in-out infinite",
+        "slide-up": "slideInUp 0.6s ease-out",
+        "fade-in": "fadeIn 0.8s ease-out",
+      },
+      backgroundImage: {
+        'hero-gradient': 'var(--hero-gradient)',
+        'card-gradient': 'var(--card-gradient)',
+        'accent-gradient': 'var(--accent-gradient)',
+        'skill-gradient': 'var(--skill-gradient)',
+      },
+      boxShadow: {
+        'primary': 'var(--shadow-primary)',
+        'accent': 'var(--shadow-accent)',
+        'card': 'var(--shadow-card)',
       },
     },
   },
