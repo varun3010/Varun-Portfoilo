@@ -10,12 +10,8 @@ import {
   Layers,
   GitBranch
 } from "lucide-react";
-import { useScrollAnimation, useStaggeredAnimation } from "@/hooks/useScrollAnimation";
 
 const Skills = () => {
-  const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation();
-  const { ref: skillsRef, visibleItems: visibleSkills } = useStaggeredAnimation(Array(6), 200);
-  
   const skillCategories = [
     {
       title: "Frontend",
@@ -101,9 +97,9 @@ const Skills = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-20 relative">
+    <section className="py-20 relative">
       <div className="container mx-auto px-6">
-        <div className={`text-center space-y-4 mb-16 transition-all duration-800 ${sectionVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'}`}>
+        <div className="text-center space-y-4 mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold">
             Technical <span className="gradient-text">Skills</span>
           </h2>
@@ -112,14 +108,12 @@ const Skills = () => {
           </p>
         </div>
 
-        <div ref={skillsRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => (
             <Card 
               key={category.title} 
-              className={`p-6 bg-card-gradient shadow-card border-border/50 hover:shadow-primary transition-all duration-700 group ${
-                visibleSkills.has(index) ? 'animate-scale-in' : 'opacity-0 scale-95'
-              }`}
-              style={{ animationDelay: `${index * 0.2}s` }}
+              className="p-6 bg-card-gradient shadow-card border-border/50 hover:shadow-primary transition-all duration-500 group"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="flex items-center gap-3 mb-6">
                 <div className={`w-12 h-12 ${category.bgColor} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>

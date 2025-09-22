@@ -1,33 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Download, Code2, Database, Globe } from "lucide-react";
-import { useState, useEffect } from "react";
 
 const Hero = () => {
-  const [typedText, setTypedText] = useState("");
-  const fullText = "Full-Stack Developer";
-  
-  useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index <= fullText.length) {
-        setTypedText(fullText.slice(0, index));
-        index++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 100);
-    
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 bg-hero-gradient opacity-10"></div>
-      <div className="absolute top-20 left-20 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-float animate-pulse-glow"></div>
+      <div className="absolute top-20 left-20 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-float"></div>
       <div className="absolute bottom-20 right-20 w-48 h-48 bg-accent/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
-      <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-secondary/20 rounded-full blur-2xl animate-float animate-rotate-slow" style={{ animationDelay: '2s' }}></div>
-      <div className="absolute top-1/4 right-1/4 w-16 h-16 bg-primary/15 rounded-full blur-xl animate-float" style={{ animationDelay: '3s' }}></div>
+      <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-secondary/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }}></div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center space-y-8 animate-fade-in">
@@ -40,12 +21,9 @@ const Hero = () => {
               Mamidala
             </h2>
             <div className="flex items-center justify-center gap-4 text-xl lg:text-2xl text-muted-foreground">
-              <Code2 className="w-6 h-6 text-primary animate-pulse" />
-              <span className="min-h-[1.5rem] flex items-center">
-                {typedText}
-                <span className="ml-1 w-0.5 h-6 bg-primary animate-pulse"></span>
-              </span>
-              <Database className="w-6 h-6 text-accent animate-pulse" style={{ animationDelay: '0.5s' }} />
+              <Code2 className="w-6 h-6 text-primary" />
+              <span>Full-Stack Developer</span>
+              <Database className="w-6 h-6 text-accent" />
             </div>
           </div>
 
@@ -58,11 +36,10 @@ const Hero = () => {
 
           {/* Tech stack badges */}
           <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
-            {['React.js', 'Node.js', 'NestJS', 'GraphQL', 'TypeScript', 'MongoDB', 'MSSQL', 'Kafka'].map((tech, index) => (
+            {['React.js', 'Node.js', 'NestJS', 'GraphQL', 'TypeScript', 'MongoDB', 'MSSQL', 'Kafka'].map((tech) => (
               <span
                 key={tech}
-                className="px-4 py-2 bg-skill-gradient rounded-full text-sm font-medium glass-morphism hover:scale-105 transition-all duration-300 animate-fade-in hover:animate-shimmer"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="px-4 py-2 bg-skill-gradient rounded-full text-sm font-medium glass-morphism"
               >
                 {tech}
               </span>

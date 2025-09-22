@@ -1,13 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, TrendingUp, Users, Code, Database, GitBranch } from "lucide-react";
-import { useScrollAnimation, useStaggeredAnimation } from "@/hooks/useScrollAnimation";
 
 const Experience = () => {
-  const { ref: sectionRef, isVisible: sectionVisible } = useScrollAnimation();
-  const { ref: projectsRef, visibleItems: visibleProjects } = useStaggeredAnimation(Array(2), 300);
-  const { ref: responsibilitiesRef, visibleItems: visibleResponsibilities } = useStaggeredAnimation(Array(4), 150);
-  
   const projects = [
     {
       title: "Assets (Driver-HOS) - Mastery Logistics Systems",
@@ -72,9 +67,9 @@ const Experience = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-20 relative">
+    <section className="py-20 relative">
       <div className="container mx-auto px-6">
-        <div className={`text-center space-y-4 mb-16 transition-all duration-800 ${sectionVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'}`}>
+        <div className="text-center space-y-4 mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold">
             Professional <span className="gradient-text">Experience</span>
           </h2>
@@ -84,8 +79,8 @@ const Experience = () => {
         </div>
 
         {/* Current Role */}
-        <div className={`mb-16 transition-all duration-800 delay-200 ${sectionVisible ? 'animate-slide-up' : 'opacity-0 translate-y-8'}`}>
-          <Card className="p-8 bg-card-gradient shadow-card border-border/50 hover:shadow-primary transition-all duration-300">
+        <div className="mb-16">
+          <Card className="p-8 bg-card-gradient shadow-card border-border/50">
             <div className="flex flex-col lg:flex-row gap-8">
               <div className="flex-1">
                 <div className="flex items-center gap-4 mb-6">
@@ -128,16 +123,10 @@ const Experience = () => {
 
         {/* Projects */}
         <div className="mb-16">
-          <h3 className={`text-3xl font-bold text-center mb-12 transition-all duration-800 delay-400 ${sectionVisible ? 'animate-fade-in' : 'opacity-0'}`}>Key Projects</h3>
-          <div ref={projectsRef} className="grid lg:grid-cols-2 gap-8">
+          <h3 className="text-3xl font-bold text-center mb-12">Key Projects</h3>
+          <div className="grid lg:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <Card 
-                key={index} 
-                className={`p-6 bg-card-gradient shadow-card border-border/50 hover:shadow-primary transition-all duration-500 ${
-                  visibleProjects.has(index) ? 'animate-scale-in' : 'opacity-0 scale-95'
-                }`}
-                style={{ animationDelay: `${index * 0.3}s` }}
-              >
+              <Card key={index} className="p-6 bg-card-gradient shadow-card border-border/50 hover:shadow-primary transition-all duration-300">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center flex-shrink-0">
                     <project.icon className="w-6 h-6 text-secondary" />
@@ -179,16 +168,10 @@ const Experience = () => {
 
         {/* Responsibilities */}
         <div className="mb-16">
-          <h3 className={`text-3xl font-bold text-center mb-12 transition-all duration-800 delay-600 ${sectionVisible ? 'animate-fade-in' : 'opacity-0'}`}>Core Responsibilities</h3>
-          <div ref={responsibilitiesRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <h3 className="text-3xl font-bold text-center mb-12">Core Responsibilities</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {responsibilities.map((responsibility, index) => (
-              <Card 
-                key={index} 
-                className={`p-6 bg-card-gradient shadow-card border-border/50 hover:shadow-accent transition-all duration-500 group text-center ${
-                  visibleResponsibilities.has(index) ? 'animate-scale-in' : 'opacity-0 scale-95'
-                }`}
-                style={{ animationDelay: `${index * 0.15}s` }}
-              >
+              <Card key={index} className="p-6 bg-card-gradient shadow-card border-border/50 hover:shadow-accent transition-all duration-300 group text-center">
                 <div className="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
                   <responsibility.icon className="w-6 h-6 text-accent" />
                 </div>

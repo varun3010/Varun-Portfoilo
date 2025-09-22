@@ -87,13 +87,7 @@ export default {
         "float": "float 3s ease-in-out infinite",
         "glow": "glow 2s ease-in-out infinite",
         "slide-up": "slideInUp 0.6s ease-out",
-        "slide-left": "slideInLeft 0.6s ease-out",
-        "slide-right": "slideInRight 0.6s ease-out",
         "fade-in": "fadeIn 0.8s ease-out",
-        "scale-in": "scaleIn 0.5s ease-out",
-        "pulse-glow": "pulse-glow 3s ease-in-out infinite",
-        "rotate-slow": "rotate-slow 20s linear infinite",
-        "shimmer": "shimmer 2s infinite",
       },
       backgroundImage: {
         'hero-gradient': 'var(--hero-gradient)',
