@@ -135,8 +135,13 @@ const Contact = () => {
                   variant="glass" 
                   size="lg"
                   onClick={() => {
-                    // Request resume via email
-                    window.open('mailto:varunmamidala85@gmail.com?subject=Resume Request&body=Hello Varun, I would like to request your resume.', '_blank');
+                    // Download the resume file
+                    const link = document.createElement('a');
+                    link.href = '/Varun_Mamidala_Resume.pdf';
+                    link.download = 'Varun_Mamidala_Resume.pdf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
                   }}
                 >
                   <Download className="w-5 h-5" />

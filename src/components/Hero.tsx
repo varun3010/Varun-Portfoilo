@@ -67,10 +67,13 @@ const Hero = () => {
               size="lg" 
               className="group"
               onClick={() => {
-                // Create a link to download the resume
+                // Download the resume file
                 const link = document.createElement('a');
-                link.href = 'mailto:varunmamidala85@gmail.com?subject=Resume Request&body=Hello Varun, I would like to request your resume.';
+                link.href = '/Varun_Mamidala_Resume.pdf';
+                link.download = 'Varun_Mamidala_Resume.pdf';
+                document.body.appendChild(link);
                 link.click();
+                document.body.removeChild(link);
               }}
             >
               <Download className="w-5 h-5 group-hover:scale-110 transition-transform" />
